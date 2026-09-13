@@ -1,0 +1,38 @@
+PROYECTO DE OPTIMIZACIÓN DE RUTAS
+====================================
+
+Dataset:
+C:\Users\Juanp\Downloads\proyecto_optimizacion\src\..\data\perth_houses.csv
+
+Suburbio:
+Bertram
+
+Viviendas disponibles:
+231
+
+Viviendas utilizadas:
+20
+
+Método inicial:
+Vecino Más Cercano
+
+Distancia inicial:
+6.2052 km
+
+Método de optimización:
+2-opt
+
+Distancia optimizada:
+6.0380 km
+
+Reducción:
+0.1671 km
+
+Porcentaje de mejora:
+2.69 %
+
+Vivienda inicial:
+1 Datchet Turn
+
+Fecha/hora de ejecución:
+2026-09-13 00:16:29
