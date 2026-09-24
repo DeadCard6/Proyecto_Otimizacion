@@ -45,10 +45,15 @@ def plot_route(df_houses: pd.DataFrame, route: list, total_distance: float,
     # 1) Dibujar todas las viviendas como puntos.
     ax.scatter(lons, lats, c="black", s=40, zorder=3, label="Viviendas")
 
-    # 2) Etiquetar cada vivienda con su índice.
-    for idx in range(len(df_houses)):
+    # 2) Etiquetar cada vivienda con su ORDEN DE VISITA en esta ruta
+    #    (0 = vivienda inicial, 1 = segunda parada, ...), no con su índice
+    #    fijo dentro del subconjunto. Así los números aparecen consecutivos
+    #    al recorrer la ruta desde el inicio hasta el cierre. El nodo de
+    #    cierre (última posición de `route`) repite físicamente la vivienda
+    #    inicial, por lo que no se vuelve a etiquetar.
+    for visit_order, idx in enumerate(route[:-1]):
         ax.annotate(
-            str(idx),
+            str(visit_order),
             (lons[idx], lats[idx]),
             textcoords="offset points",
             xytext=(5, 5),
@@ -115,9 +120,10 @@ def plot_comparison(df_houses: pd.DataFrame, initial_route: list, initial_distan
 
     for ax, route, distance, subtitle, color in panels:
         ax.scatter(lons, lats, c="black", s=40, zorder=3, label="Viviendas")
-        for idx in range(len(df_houses)):
+    
+        for visit_order, idx in enumerate(route[:-1]):
             ax.annotate(
-                str(idx),
+                str(visit_order),
                 (lons[idx], lats[idx]),
                 textcoords="offset points",
                 xytext=(5, 5),
